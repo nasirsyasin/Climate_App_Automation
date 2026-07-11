@@ -1,8 +1,8 @@
-# Dashboard Earth Automation
+# ClimateApp Automation
 
 ## Project Overview
 
-`Dashboard Earth Automation` is a Python-based test automation repository for the Dashboard Earth mobile and web workflows. The project uses Appium for mobile UI automation, Selenium for web interactions, BrowserStack for cross-device execution, and Mixpanel verification for analytics workflows. It also includes integrations with Zephyr Scale for test execution reporting.
+`ClimateApp Automation` is a Python-based test automation repository for the ClimateApp mobile and web workflows. The project uses Appium for mobile UI automation, Selenium for web interactions, BrowserStack for cross-device execution, and Mixpanel verification for analytics workflows. It also includes integrations with Zephyr Scale for test execution reporting.
 
 ## Goals
 
