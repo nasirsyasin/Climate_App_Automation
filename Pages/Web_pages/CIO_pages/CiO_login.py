@@ -1,3 +1,4 @@
+import os
 import time
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
@@ -27,7 +28,7 @@ def test_cio_login():
         )
         google_email_input.click()
         google_email_input.clear()
-        google_email_input.send_keys("email")
+        google_email_input.send_keys(os.getenv("CIO_TEST_EMAIL", ""))
         time.sleep(10)
         xpath_email_next_btn = "//div[@id = 'identifierNext']/div/button"
         google_email_next_btn = WebDriverWait(driver, 100).until(
@@ -41,7 +42,7 @@ def test_cio_login():
         )
         google_pwd_input.click()
         google_pwd_input.clear()
-        google_pwd_input.send_keys("email")
+        google_pwd_input.send_keys(os.getenv("CIO_TEST_PASSWORD", ""))
         time.sleep(10)
         xpath_pwd_btn = "//div[@id = 'passwordNext']/div/button"
         google_pwd_next_btn = WebDriverWait(driver, 100).until(

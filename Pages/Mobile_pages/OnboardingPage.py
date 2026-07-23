@@ -1,3 +1,5 @@
+import os
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -248,12 +250,12 @@ class OnboardingPage:
         try:
             # Check for iOS specific elements
             if self.is_ios():
-                self.find_element("i_input_password").send_keys("P@ss1234")
+                self.find_element("i_input_password").send_keys(os.getenv("TEST_PASSWORD", ""))
                 return True
 
             # Check for Android specific elements
             elif self.is_android():
-                self.find_element("input_password").send_keys("P@ss1234")
+                self.find_element("input_password").send_keys(os.getenv("TEST_PASSWORD", ""))
                 return True
             # If neither iOS nor Android elements are found, raise an exception
             else:
@@ -267,12 +269,12 @@ class OnboardingPage:
         try:
             # Check for iOS specific elements
             if self.is_ios():
-                self.find_element("i_retype_password").send_keys("P@ss1234")
+                self.find_element("i_retype_password").send_keys(os.getenv("TEST_PASSWORD", ""))
                 return True
 
             # Check for Android specific elements
             elif self.is_android():
-                self.find_element("retype_password").send_keys("P@ss1234")
+                self.find_element("retype_password").send_keys(os.getenv("TEST_PASSWORD", ""))
                 return True
             # If neither iOS nor Android elements are found, raise an exception
             else:

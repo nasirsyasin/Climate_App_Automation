@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 from appium import webdriver
 from selenium.common.exceptions import WebDriverException
 from appium.options.common import AppiumOptions
@@ -20,7 +23,7 @@ class AppiumDriverSingleton:
         capabilities = {
             "platformName": "android",
             "appium:deviceName": "3f8b7a18",
-            "appium:app": "/Users/mac/Documents/Python_Projects/DBE_Project/Resources/stage-602.apk",
+            "appium:app": os.getenv("APP_PATH", str(Path.cwd() / "Resources" / "app.apk")),
             "appium:automationName": "UiAutomator2",
             "skipDeviceInitialization": True,
             "skipServerInstallation": True,

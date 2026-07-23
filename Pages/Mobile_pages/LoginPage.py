@@ -1,6 +1,8 @@
 import time
 
 import pytest
+import os
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -106,7 +108,7 @@ class LoginPage:
             # Check for Android specific elements
             elif self.is_android():
                 email_input = self.find_element("email_input")
-                email_input.send_keys("zubair.shahid+1200073@mavrictech.com")
+                email_input.send_keys(os.getenv("TEST_EMAIL", CommonCache.email))
                 return True
 
             # If neither iOS nor Android elements are found, raise an exception
@@ -123,14 +125,14 @@ class LoginPage:
             if self.is_ios():
                 password_input = self.find_element("i_password_input")
                 password_input.clear()
-                password_input.send_keys("P@ss1234")
+                password_input.send_keys(os.getenv("TEST_PASSWORD", ""))
                 return True
 
             # Check for Android specific elements
             elif self.is_android():
                 password_input = self.find_element("password_input")
                 password_input.clear()
-                password_input.send_keys("P@ss1234")
+                password_input.send_keys(os.getenv("TEST_PASSWORD", ""))
                 return True
             # If neither iOS nor Android elements are found, raise an exception
             else:

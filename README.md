@@ -9,7 +9,7 @@ Python automation framework for validating ClimateApp mobile journeys, web workf
 
 The project combines Appium, Selenium, pytest, BrowserStack, Mixpanel verification, CSV reporting, and optional Zephyr Scale result publishing.
 
-> **Repository status:** This repository contains both reusable page objects and project-specific execution scripts. Some flows require private application builds, test accounts, authenticated cookies, or an internal Zephyr client before they can run from a clean clone.
+> **Repository status:** This repository contains reusable page objects and project-specific execution scripts. Some workflows require organization-specific services and application builds before they can run from a clean clone.
 
 ## Contents
 
@@ -117,7 +117,7 @@ appium
 
 ## Configuration
 
-Never place credentials, active browser cookies, or private application binaries in source control. Configure the values below in your shell or a local ignored `.env` file.
+Configure environment-specific values in your shell or a local `.env` file.
 
 | Variable or file | Used by | Description |
 | --- | --- | --- |
@@ -128,11 +128,7 @@ Never place credentials, active browser cookies, or private application binaries
 | `TEST_EMAIL` | Mobile login flows | Dedicated non-production test account |
 | `TEST_PASSWORD` | Mobile login flows | Password for the dedicated test account |
 | `MIXPANEL_EMAIL` | Mixpanel workflows | Account or filter email used during event verification |
-| `ZEPHYR_TOKEN` | Zephyr reporting | Zephyr Scale API token |
-| `token.txt` | Legacy Zephyr integration | Local token file; ignored and never committed |
-| `cookies.json` | Mixpanel workflows | Local authenticated browser session; do not commit |
-
-The BrowserStack YAML files are templates. Replace their app value with the identifier for your build and use the environment-backed credentials appropriate for your account. BrowserStack Local must also be running when `browserstackLocal: true` is enabled.
+The BrowserStack YAML files are templates. Replace their app value with the identifier for your build and configure the account values in your local environment. BrowserStack Local must also be running when `browserstackLocal: true` is enabled.
 
 Local Appium capabilities and result paths currently contain machine-specific defaults. Update them to use repository-relative paths or environment variables before running on another machine.
 
@@ -166,7 +162,7 @@ The smoke suite combines multiple mobile and analytics workflows and writes resu
 python TestSuite/Test_Suite_Smoke.py
 ```
 
-This is a project-specific orchestration script rather than a guaranteed clean-clone entry point. Confirm that the private Zephyr requester, application build, credentials, and authenticated cookies are available first.
+This is a project-specific orchestration script rather than a guaranteed clean-clone entry point. Confirm that the required application build and service access are available first.
 
 ### BrowserStack
 
@@ -181,7 +177,7 @@ For BrowserStack Local, install and start the BrowserStack Local binary before e
 
 ### Analytics verification
 
-Analytics workflows are implemented under `Pages/Web_pages/Mixpanel_pages/`. They require a valid Mixpanel session, local cookies, and access to the relevant project data. Exported and comparison CSV files are written under `Mixpanel_Results/`.
+Analytics workflows are implemented under `Pages/Web_pages/Mixpanel_pages/`. They require access to the relevant analytics project data. Exported and comparison CSV files are written under `Mixpanel_Results/`.
 
 ## Reports and artifacts
 
@@ -192,7 +188,7 @@ Analytics workflows are implemented under `Pages/Web_pages/Mixpanel_pages/`. The
 | BrowserStack dashboard | Remote session videos, logs, screenshots, and network logs when enabled |
 | Zephyr Scale | Optional test-case and step results published by the internal integration |
 
-Generated results should be reviewed before committing. Do not commit files that contain customer data, credentials, session cookies, or private analytics data.
+Generated results should be reviewed before committing.
 
 ## Troubleshooting
 
@@ -206,19 +202,11 @@ Some existing flow classes use project-specific names instead of pytest’s conv
 
 ### Web analytics checks fail at login
 
-Refresh the local authenticated cookies and confirm that the Mixpanel account, event filter, and browser session are valid. Never solve this by committing new cookies.
+Confirm that the configured analytics account, event filter, and browser session are valid.
 
-### Zephyr reporting fails during import
+### Result reporting fails during import
 
-The Zephyr requester is an internal dependency and is not included in this public workspace. Provide the approved private implementation or disable result publishing for local development.
-
-## Security
-
-- Treat any credential that has been committed or shared as compromised; revoke and rotate it immediately.
-- Keep `token.txt`, `.env` files, BrowserStack credentials, test passwords, application binaries, and `cookies.json` files out of Git.
-- Review Git history before publishing this repository. Removing a file from the latest commit does not remove its previous contents from history.
-- Use GitHub Actions Secrets or another secret manager for CI credentials.
-- Use dedicated non-production accounts and anonymized analytics data for automated tests.
+Confirm that the reporting integration is available in the execution environment, or disable result publishing for local development.
 
 ## Contributing
 

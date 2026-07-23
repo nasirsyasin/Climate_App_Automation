@@ -4,9 +4,9 @@ from Pages.Web_pages.csv_comparison import compare_csv_by_column
 
 class CompostEventsVerification:
     def __init__(self):
-        self.predefine_ewaste_events = "/Users/mac/Documents/Python_Projects/DBE_Project/Mixpanel_Results/predefine_compost_events.csv"
-        self.mixpanel_events = "/Users/mac/Documents/Python_Projects/DBE_Project/Mixpanel_Results/mixpanel_events.csv"
-        self.mixpanel_compost_events_results = "/Users/mac/Documents/Python_Projects/DBE_Project/Mixpanel_Results/compost_events_results.csv"
+        self.predefine_ewaste_events = "Mixpanel_Results/predefine_compost_events.csv"
+        self.mixpanel_events = "Mixpanel_Results/mixpanel_events.csv"
+        self.mixpanel_compost_events_results = "Mixpanel_Results/compost_events_results.csv"
         self.column_1 = "Event Name"
         self.column_2 = "test_case_key"
 

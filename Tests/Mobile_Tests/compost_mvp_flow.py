@@ -316,7 +316,7 @@ test_manager = TestExecutionManager()
 
 
 def log_test_result(test_name, status):
-    csv_file = "/Users/mac/Documents/Python_Projects/DBE_Project/Results/Compost_MVP_Screens.csv"
+    csv_file = "Results/Compost_MVP_Screens.csv"
     csv_headers = ["Compost MVP Tests Steps", "Status"]
     csv_rows = [{"Compost MVP Tests Steps": test_name, "Status": status}]  # Wrapping rows in a list of dictionaries
 

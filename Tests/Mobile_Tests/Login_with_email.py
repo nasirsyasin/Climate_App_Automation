@@ -107,7 +107,7 @@ test_manager = TestExecutionManager()
 
 
 def log_test_result(test_name, status):
-    csv_file = "/Users/mac/Documents/Python_Projects/DBE_Project/Results/Login_results.csv"
+    csv_file = "Results/Login_results.csv"
     csv_headers = ["Tests Summary", "Status"]
     csv_rows = [{"Tests Summary": test_name, "Status": status}]  # Wrapping rows in a list of dictionaries
 

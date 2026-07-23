@@ -1,3 +1,4 @@
+import os
 import pytest
 import time
 from selenium.webdriver.common.by import By
@@ -43,7 +44,7 @@ class Mixpanel_Login:
             )
             email_input.click()
             email_input.clear()
-            email_input.send_keys("email")
+            email_input.send_keys(os.getenv("MIXPANEL_EMAIL", ""))
 
             xpath_Next_button = "//div[@id = 'identifierNext']/div/button"
             next_btn = WebDriverWait(self.driver, 100).until(
@@ -58,7 +59,7 @@ class Mixpanel_Login:
             )
             password_input.click()
             password_input.clear()
-            password_input.send_keys("password")
+            password_input.send_keys(os.getenv("MIXPANEL_PASSWORD", ""))
 
             time.sleep(10)
 

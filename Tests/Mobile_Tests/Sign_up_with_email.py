@@ -124,7 +124,7 @@ class Sign_up_with_email:
 
 
 def log_test_result(test_name, status):
-    csv_file = "/Users/mac/Documents/Python_Projects/DBE_Project/Results/Sign_with_email.csv"
+    csv_file = "Results/Sign_with_email.csv"
     csv_headers = ["Signup Tests Steps", "Status"]
     csv_rows = [{"Signup Tests Steps": test_name, "Status": status}]  # Wrapping rows in a list of dictionaries
 

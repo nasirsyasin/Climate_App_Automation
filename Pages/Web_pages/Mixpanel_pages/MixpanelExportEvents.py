@@ -10,7 +10,7 @@ from Utility.web_driver_base_setup import loadCookies
 class MixpanelExportEvents:
     def __init__(self):
         self.driver = driver_access_mixpanel()
-        self.mixpanel_events = "/Users/mac/Documents/Python_Projects/DBE_Project/Mixpanel_Results/mixpanel_events.csv"
+        self.mixpanel_events = "Mixpanel_Results/mixpanel_events.csv"
         print(f"mixpanel: {CommonCache.email}")
 
     def export_events(self):
