@@ -162,3 +162,7 @@ AuthenticatedRequester.py
 requirements.txt
 token.txt
 Resources/
+.env
+*.env
+cookies.json
+**/cookies.json

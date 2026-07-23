@@ -1,7 +1,7 @@
-userName: z
-accessKey: q
+userName: ${BROWSERSTACK_USERNAME}
+accessKey: ${BROWSERSTACK_ACCESS_KEY}
 framework: pytest
-app: bs://8e
+app: ${BROWSERSTACK_APP}
 platforms:
   - platformName: android
     deviceName: Samsung Galaxy A52

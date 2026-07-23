@@ -1,7 +1,7 @@
-userName: zubairshahid_nJNfdh
-accessKey: quhiSvWjy1Var2txvskx
+userName: ${BROWSERSTACK_USERNAME}
+accessKey: ${BROWSERSTACK_ACCESS_KEY}
 framework: pytest
-app: bs://ac61dbcc3df01cbb99794e801d697ab8f1bb4485
+app: ${BROWSERSTACK_APP}
 platforms:
   - platformName: ios
     deviceName: iPhone 14 Pro Max
